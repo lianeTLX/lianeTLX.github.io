@@ -1,0 +1,128 @@
+@font-face {
+  font-family: "icons-turn-arrow";
+  src:url("fonts/icons/turn-arrow.svg") format("svg");
+}
+//网站统一样式
+*{
+  box-sizing:border-box;
+}
+body,p,ul,li,h1,h2,h3,h4,h5,h6,dd,dl,dt{
+  padding:0;
+  margin:0;
+}
+body {
+  width:100%;
+  height:100%;
+  background:#222;
+}
+.content{
+  width:100%;
+  height:100%;
+}
+//修饰舞台结构
+.stage{
+  position:relative;
+  margin-top:40px;
+  width:100%;
+  height:680px;
+}
+//图片
+.img-sec{
+  position:relative;
+  width:100%;
+  height:100%;
+  overflow:hidden;
+  background:#ddd;
+  .img-figure{
+    position:absolute;
+
+    width:320px;
+    height:360px;
+    margin:0;
+    padding:40px;
+    background:#fff;
+    box-sizing:border-box;
+    cursor:pointer;
+
+    transform-style:preserve-3d;
+    perspective:1600px;
+    transform-origin:0 50% 0;//三个值分别表示x轴原点，y轴原点,z轴原点
+    transition:left 1000ms linear,top 1000ms linear,transform 800ms ease-in-out;
+
+    &.is-inverse{
+      transform: translate(320px) rotateY(180deg);
+      transition:transform 800ms ease-in-out;
+    }
+    img{
+      width:240px;
+      height:240px;
+    }
+    h2{
+      text-align:center;
+      margin:20px 0 0 0;
+      color:#a7a0a2;
+      font-size:16px;
+    }
+    .img-back{
+      width:100%;
+      height:100%;
+      background:#fff;
+      position:absolute;
+      left:0;
+      top:0;
+      overflow:hidden;
+      box-sizing:border-box;
+      padding:50px 40px;
+      text-align:center;
+      color:#a7a0a2;
+      font-size:20px;
+      transform:rotateY(180deg) translateZ(1px);
+    }
+  }
+ }
+
+//控制条
+.control-nav{
+  position:absolute;
+  left:0;
+  bottom:30px;
+  z-index:101;
+  width:100%;
+  text-align:center;
+  .controller-unit{
+    display:inline-block;
+    width:30px;
+    height:30px;
+    margin:0 5px;
+    text-align:center;
+    vertical-align:middle;
+
+    cursor:pointer;
+    background:#aaa;
+    border-radius:50%;
+
+    transform:scale(.5);//非居中态缩放为0.5倍大小
+    transition:transform 800ms ease-in-out,background-color 300ms;
+
+    &.is-center{
+      transform:scale(1);
+      background:#888;
+
+      &::after{
+        position:absolute;
+        top:0;
+        left:3px;
+        width:30px;
+        height:30px;
+        content:" ";
+        display:inline-block;
+        background:url('images/icons/turn-arrow.png') no-repeat;
+      }
+
+      &.is-inverse{
+        background:#555;
+        transform:rotateY(180deg);
+      }
+    }
+  }
+}
